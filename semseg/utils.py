@@ -37,6 +37,7 @@ def multi_hausdorff_distance(gt, pred, num_classes, start_value=1):
     for cls in range(start_value, start_value + num_classes - 1):
         outputs_ = outputs[:, cls]
         labels_ = labels[:, cls]
+        print(labels_)
         hausdorff_distance_ = hd(outputs_, labels_)
         hausdorff_distances.append(hausdorff_distance_)
     return sum(hausdorff_distances) / (num_classes-1)

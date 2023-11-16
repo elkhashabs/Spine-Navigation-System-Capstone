@@ -94,24 +94,24 @@ def val_model(net, val_data, config, device=None):
             labels_np = labels_np[:,0]              #     B x Z x Y x X
 
             multi_dice = multi_dice_coeff(labels_np,outputs_np,config.num_outs)
-            multi_hd = multi_hausdorff_distance(labels_np, outputs_np, config.num_outs)
-            multi_assd = multi_assd_distance(labels_np, outputs_np, config.num_outs)
+            # multi_hd = multi_hausdorff_distance(labels_np, outputs_np, config.num_outs)
+            # multi_assd = multi_assd_distance(labels_np, outputs_np, config.num_outs)
             multi_dices.append(multi_dice)
-            multi_hds.append(multi_hd)
-            multi_assds.append(multi_assd)
+            # multi_hds.append(multi_hd)
+            # multi_assds.append(multi_assd)
 
     multi_dices_np = np.array(multi_dices)
     mean_multi_dice = np.mean(multi_dices_np)
     std_multi_dice = np.std(multi_dices_np)
     print("Multi-Dice: {:.4f} +/- {:.4f}".format(mean_multi_dice,std_multi_dice))
 
-    multi_hds_np = np.array(multi_hds)
-    mean_multi_hd = np.mean(multi_hds_np)
-    std_multi_hd = np.std(multi_hds_np)
-    print("Multi-Hausdorff Distance: {:.4f} +/- {:.4f}".format(mean_multi_hd, std_multi_hd))
+    # multi_hds_np = np.array(multi_hds)
+    # mean_multi_hd = np.mean(multi_hds_np)
+    # std_multi_hd = np.std(multi_hds_np)
+    # print("Multi-Hausdorff Distance: {:.4f} +/- {:.4f}".format(mean_multi_hd, std_multi_hd))
 
-    multi_assds_np = np.array(multi_assds)
-    mean_multi_assd = np.mean(multi_assds_np)
-    std_multi_assd = np.std(multi_assds_np)
-    print("Multi-ASSD: {:.4f} +/- {:.4f}".format(mean_multi_assd, std_multi_assd))
-    return multi_dices, mean_multi_dice, std_multi_dice
+    # multi_assds_np = np.array(multi_assds)
+    # mean_multi_assd = np.mean(multi_assds_np)
+    # std_multi_assd = np.std(multi_assds_np)
+    # print("Multi-ASSD: {:.4f} +/- {:.4f}".format(mean_multi_assd, std_multi_assd))
+    return multi_dices#, mean_multi_dice, std_multi_dice

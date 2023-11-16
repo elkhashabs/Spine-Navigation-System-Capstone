@@ -10,7 +10,7 @@ class InitialConv(nn.Module):
 
         self.conv = nn.Conv3d(in_channels=1, out_channels=out_channels, kernel_size=5, stride=1, padding=2)
         self.bn   = nn.BatchNorm3d(out_channels)
-        self.conv_down = nn.Conv3d(in_channels=out_channels, out_channels=out_channels * 2, kernel_size=2, stride=2, padding=0)
+        self.conv_down = nn.Conv3d(in_channels=out_channels, out_channels=out_channels * 2, kernel_size=2, stride=1, padding=0)
         self.bn_down = nn.BatchNorm3d(out_channels * 2)
 
     def forward(self, x):
@@ -30,7 +30,7 @@ class DownConvBlock2b(nn.Module):
         self.bn_a = nn.BatchNorm3d(out_channels)
         self.conv_b = nn.Conv3d(in_channels=out_channels, out_channels=out_channels, kernel_size=5, stride=1, padding=2)
         self.bn_b = nn.BatchNorm3d(out_channels)
-        self.conv_down = nn.Conv3d(in_channels=out_channels, out_channels=out_channels * 2, kernel_size=2, stride=2, padding=0)
+        self.conv_down = nn.Conv3d(in_channels=out_channels, out_channels=out_channels * 2, kernel_size=2, stride=1, padding=0)
         self.bn_down = nn.BatchNorm3d(out_channels * 2)
 
     def forward(self, x):
@@ -52,7 +52,7 @@ class UpConvBlock2b(nn.Module):
         self.bn_a = nn.BatchNorm3d(out_channels)
         self.conv_b = nn.Conv3d(in_channels=out_channels, out_channels=out_channels, kernel_size=5, stride=1, padding=2)
         self.bn_b = nn.BatchNorm3d(out_channels)
-        self.conv_up = nn.ConvTranspose3d(in_channels=out_channels, out_channels=out_channels // undersampling_factor, kernel_size=2, stride=2, padding=0)
+        self.conv_up = nn.ConvTranspose3d(in_channels=out_channels, out_channels=out_channels // undersampling_factor, kernel_size=2, stride=1, padding=0)
         self.bn_up = nn.BatchNorm3d(out_channels // undersampling_factor)
 
     def forward(self, x):
@@ -75,7 +75,7 @@ class DownConvBlock3b(nn.Module):
         self.bn_b = nn.BatchNorm3d(out_channels)
         self.conv_c = nn.Conv3d(in_channels=out_channels, out_channels=out_channels, kernel_size=5, stride=1, padding=2)
         self.bn_c = nn.BatchNorm3d(out_channels)
-        self.conv_down = nn.Conv3d(in_channels=out_channels, out_channels=out_channels * 2, kernel_size=2, stride=2, padding=0)
+        self.conv_down = nn.Conv3d(in_channels=out_channels, out_channels=out_channels * 2, kernel_size=2, stride=1, padding=0)
         self.bn_down = nn.BatchNorm3d(out_channels * 2)
 
     def forward(self, x):
@@ -99,7 +99,7 @@ class UpConvBlock3b(nn.Module):
         self.bn_b = nn.BatchNorm3d(out_channels)
         self.conv_c = nn.Conv3d(in_channels=out_channels, out_channels=out_channels, kernel_size=5, stride=1, padding=2)
         self.bn_c = nn.BatchNorm3d(out_channels)
-        self.conv_up = nn.ConvTranspose3d(in_channels=out_channels, out_channels=out_channels // undersampling_factor, kernel_size=2, stride=2, padding=0)
+        self.conv_up = nn.ConvTranspose3d(in_channels=out_channels, out_channels=out_channels // undersampling_factor, kernel_size=2, stride=1, padding=0)
         self.bn_up = nn.BatchNorm3d(out_channels // undersampling_factor)
 
     def forward(self, x):
